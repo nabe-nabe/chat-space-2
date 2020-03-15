@@ -4,27 +4,17 @@
       .side-bar__header__box__name
         = current_user.name
       .side-bar__header__box__menu
-        = link_to "#", class: "side-bar__header__box__menu__btn" do
+        = link_to new_group_path, class: "side-bar__header__box__menu__btn" do
           = icon('far', 'edit',  class: "side-bar__header__box__menu__btn--icon")
         = link_to edit_user_path(current_user) , class: "side-bar__header__box__menu__btn" do
           = icon('fas', 'cog', class: "side-bar__header__box__menu__btn--icon")
 
   .side-bar__group
-    .side-bar__group__list
-      .side-bar__group__list__box
-        .side-bar__group__list__box__name
-          グループのname
-        .side-bar__group__list__box__message
-          最新メッセージ
-    .side-bar__group__list
-      .side-bar__group__list__box
-        .side-bar__group__list__box__name
-          グループのname
-        .side-bar__group__list__box__message
-          最新メッセージ
-    .side-bar__group__list
-      .side-bar__group__list__box
-        .side-bar__group__list__box__name
-          グループのname
-        .side-bar__group__list__box__message
-          最新メッセージ
+    - current_user.groups.each do |group|
+      .side-bar__group__list
+        = link_to '#' do
+          .side-bar__group__list__box
+            .side-bar__group__list__box__name
+              = group.name
+            .side-bar__group__list__box__message
+              メッセージはまだありません。
