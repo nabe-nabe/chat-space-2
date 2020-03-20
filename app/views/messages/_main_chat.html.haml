@@ -2,61 +2,25 @@
   .main-chat__header
     .main-chat__header__box
       .main-chat__header__box__name
-        ユーザーネームです。
+        = @group.name
       .main-chat__header__box__member
-        Member：メンバーA、メンバーB、メンバーC
+        Member：
+        - @group.users.each do |user|
+          = user.name
     .main-chat__header__edit
-      = link_to "Edit", edit_group_path(2), class: "main-chat__header__edit__btn"
+      = link_to "Edit", edit_group_path(params[:group_id]), class: "main-chat__header__edit__btn"
   .main-chat__contents
-    .main-chat__contents__list
-      .main-chat__contents__list__box
-        .main-chat__contents__list__box__name
-          投稿した人の名前
-        .main-chat__contents__list__box__date
-          2020/03/13(Fri) 20:48:15
-      .main-chat__contents__list__message
-        こんにちは！！！！！
-    .main-chat__contents__list
-      .main-chat__contents__list__box
-        .main-chat__contents__list__box__name
-          投稿した人の名前
-        .main-chat__contents__list__box__date
-          2020/03/13(Fri) 20:48:15
-      .main-chat__contents__list__message
-        こんにちは！！！！！
-    .main-chat__contents__list
-      .main-chat__contents__list__box
-        .main-chat__contents__list__box__name
-          投稿した人の名前
-        .main-chat__contents__list__box__date
-          2020/03/13(Fri) 20:48:15
-      .main-chat__contents__list__message
-        こんにちは！！！！！
-    .main-chat__contents__list
-      .main-chat__contents__list__box
-        .main-chat__contents__list__box__name
-          投稿した人の名前
-        .main-chat__contents__list__box__date
-          2020/03/13(Fri) 20:48:15
-      .main-chat__contents__list__message
-        こんにちは！！！！！
-    .main-chat__contents__list
-      .main-chat__contents__list__box
-        .main-chat__contents__list__box__name
-          投稿した人の名前
-        .main-chat__contents__list__box__date
-          2020/03/13(Fri) 20:48:15
-      .main-chat__contents__list__message
-        こんにちは！！！！！
+    = render @messages
   .main-chat__form
     .main-chat__form__contents
       .main-chat__form__contents__box
-        %input{type: "text", placeholder: "type a message"}
-        %label{class:"main-chat__form__contents__box__picture"}
-          = icon('fas', 'image',  class: "main-chat__form__contents__box__picture__btn")
-          %input{type: "file"}
-      .main-chat__form__contents__send
-        = link_to "Send","#", class: "main-chat__form__contents__send__btn"
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, placeholder: 'type a message'
+          = f.label :image, class: 'main-chat__form__contents__box__picture' do
+            = icon('fas', 'image', class: "main-chat__form__contents__box__picture__btn")
+            = f.file_field :image
+          .main-chat__form__contents__send
+            = f.submit 'Send', class: 'main-chat__form__contents__send__btn'
 
 
 
