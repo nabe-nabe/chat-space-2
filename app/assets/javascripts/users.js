@@ -2,7 +2,7 @@ $(function() {
   function buildUser(user){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="a">追加</a>
+                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
                 </div>`
     $('#user-search-result').append(html);
   }
@@ -58,15 +58,11 @@ $(function() {
   $(document).on("click", ".chat-group-user__btn--add",function() {
     const userName = $(this).attr("data-user-name");
     const userId = $(this).attr("data-user-id");
-    $(this)
-      .parent()
-      .remove();
+    $(this).parent().remove();
     addDeleteUser(userName, userId);
     addMember(userId);
   });
   $(document).on("click", ".chat-group-user__btn--remove", function() {
-    $(this)
-      .parent()
-      .remove();
+    $(this).parent().remove();
   });
 });
