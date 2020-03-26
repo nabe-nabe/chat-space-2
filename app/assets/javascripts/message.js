@@ -90,50 +90,53 @@ $(function(){
   var buildHTML = function(message) {
     if (message.content && message.image) {
       //data-idが反映されるようにしている
-      var html = `<div class="main-chat__contents__list" data-message-id=` + message.id + `>` +
-        `<div class="main-chat__contents__list__box">` +
-          `<div class="main-chat__contents__list__box__name">` +
-            message.user_name +
-          `</div>` +
-          `<div class="main-chat__contents__list__box__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="main-chat__contents__list__message">` +
-          message.content +
-          `<img src="` + message.image + `" class="main-chat__contents__list__image" >` +
-        `</div>` +
-      `</div>`
+      var html =
+      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+        <div class="main-chat__contents__list__box">
+          <div class="main-chat__contents__list__box__name">
+            ${message.user_name}
+          </div>
+          <div class="main-chat__contents__list__box__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="main-chat__contents__list__message">
+          ${message.content}
+          <img src="${message.image}" class="main-chat__contents__list__image">
+        </div>
+      </div>`
     } else if (message.content) {
       //同様に、data-idが反映されるようにしている
-      var html = `<div class="main-chat__contents__list" data-message-id=` + message.id + `>` +
-        `<div class="main-chat__contents__list__box">` +
-          `<div class="main-chat__contents__list__box__name">` +
-            message.user_name +
-          `</div>` +
-          `<div class="main-chat__contents__list__box__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="main-chat__contents__list__message">` +
-          message.content +
-        `</div>` +
-      `</div>`
+      var html =
+      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+        <div class="main-chat__contents__list__box">
+          <div class="main-chat__contents__list__box__name">
+            ${message.user_name}
+          </div>
+          <div class="main-chat__contents__list__box__date">
+           ${message.created_at}
+          </div>
+        </div>
+        <div class="main-chat__contents__list__message">
+         ${message.content}
+        </div>
+      </div>`
     } else if (message.image) {
       //同様に、data-idが反映されるようにしている
-      var html = `<div class="main-chat__contents__list" data-message-id=` + message.id + `>` +
-        `<div class="main-chat__contents__list__box">` +
-          `<div class="main-chat__contents__list__box__name">` +
+      var html =
+      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+        <div class="main-chat__contents__list__box">
+          <div class="main-chat__contents__list__box__name">
             message.user_name +
-          `</div>` +
-          `<div class="main-chat__contents__list__box__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="main-chat__contents__list__message">` +
-          `<img src="` + message.image + `" class="main-chat__contents__list__image" >` +
-        `</div>` +
-      `</div>`
+          </div>
+          <div class="main-chat__contents__list__box__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="main-chat__contents__list__message">
+          <img src="${message.image}" class="main-chat__contents__list__image" >
+        </div>
+      </div>`
     };
     return html;
   };
