@@ -1,7 +1,7 @@
 $(function(){
   function buildPost(message){
     if ( message.image ) {
-      var html = `<div class="main-chat__contents__list">
+      var html = `<div class="main-chat__contents__list" data-message-id=${message.id}>
                     <div class="main-chat__contents__list__box">
                     <div class="main-chat__contents__list__box__name">
                       ${message.user_name}
@@ -17,7 +17,7 @@ $(function(){
                   </div>`
       return html;
     } else {
-      var html = `<div class="main-chat__contents__list">
+      var html = `<div class="main-chat__contents__list" data-message-id=${message.id}>
                     <div class="main-chat__contents__list__box">
                     <div class="main-chat__contents__list__box__name">
                       ${message.user_name}
