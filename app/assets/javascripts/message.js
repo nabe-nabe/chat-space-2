@@ -1,7 +1,7 @@
 $(function(){
   function buildPost(message){
     if ( message.image ) {
-      var html = `<div class="main-chat__contents__list" data-message-id=${message.id}>
+      var html = `<div class="main-chat__contents__list" data-message-id="${message.id}">
                     <div class="main-chat__contents__list__box">
                     <div class="main-chat__contents__list__box__name">
                       ${message.user_name}
@@ -17,7 +17,7 @@ $(function(){
                   </div>`
       return html;
     } else {
-      var html = `<div class="main-chat__contents__list" data-message-id=${message.id}>
+      var html = `<div class="main-chat__contents__list" data-message-id="${message.id}">
                     <div class="main-chat__contents__list__box">
                     <div class="main-chat__contents__list__box__name">
                       ${message.user_name}
@@ -91,7 +91,7 @@ $(function(){
     if (message.content && message.image) {
       //data-idが反映されるようにしている
       var html =
-      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+      `<div class="main-chat__contents__list" data-message-id="${message.id}">
         <div class="main-chat__contents__list__box">
           <div class="main-chat__contents__list__box__name">
             ${message.user_name}
@@ -108,7 +108,7 @@ $(function(){
     } else if (message.content) {
       //同様に、data-idが反映されるようにしている
       var html =
-      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+      `<div class="main-chat__contents__list" data-message-id="${message.id}">
         <div class="main-chat__contents__list__box">
           <div class="main-chat__contents__list__box__name">
             ${message.user_name}
@@ -124,7 +124,7 @@ $(function(){
     } else if (message.image) {
       //同様に、data-idが反映されるようにしている
       var html =
-      `<div class="main-chat__contents__list" data-message-id=${message.id}>
+      `<div class="main-chat__contents__list" data-message-id="${message.id}">
         <div class="main-chat__contents__list__box">
           <div class="main-chat__contents__list__box__name">
             message.user_name +
