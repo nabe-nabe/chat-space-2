@@ -7,6 +7,14 @@ $(function() {
     $('#user-search-result').append(html);
   }
 
+  function appendUserId(users_id) {
+    $('.chat-group-user.clearfix').each(function(){
+      var user_id = $(this).attr('id');
+      users_id.push(user_id);
+    });
+    return users_id;
+  }
+
   function addNoUser() {
     var html = `
       <div class="chat-group-user clearfix">
@@ -32,16 +40,19 @@ $(function() {
 
   $("#user-search-field").on("keyup", function() {
     let input = $("#user-search-field").val();
+    var users_id = [];
+    appendUserId(users_id);
     $.ajax({
       type: "GET",
       url: "/users",
-      data: { keyword: input },
+      data: { keyword: input , group_users_id: users_id},
       dataType: "json"
     })
       .done(function(users) {
         $("#user-search-result").empty();
         if (users.length !== 0) {
           users.forEach(function(user) {
+
             buildUser(user);
           });
         } else if (input.length == 0) {
